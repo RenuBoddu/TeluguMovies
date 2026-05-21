@@ -1,0 +1,659 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>🎬 Renu Talkies - Book Latest Telugu Movies 2024-2026</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', 'Poppins', system-ui, -apple-system, 'Inter', 'Roboto', sans-serif;
+        }
+
+        body {
+            background: linear-gradient(145deg, #0a0f1e 0%, #0c1222 100%);
+            color: #f0f3fa;
+            padding: 2rem 1.5rem;
+        }
+
+        /* custom scroll */
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #1a1f2e;
+            border-radius: 10px;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #f5b042;
+            border-radius: 10px;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        /* header & nav */
+        .header {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+            border-bottom: 2px solid rgba(245, 176, 66, 0.3);
+            padding-bottom: 1rem;
+        }
+        .logo h1 {
+            font-size: 1.9rem;
+            letter-spacing: -0.5px;
+            background: linear-gradient(135deg, #FFB347, #FF8C42);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            display: inline-block;
+        }
+        .logo span {
+            font-size: 0.9rem;
+            color: #aaaec9;
+            display: block;
+        }
+        .year-badge {
+            background: #1e243b;
+            padding: 0.5rem 1.2rem;
+            border-radius: 40px;
+            font-weight: 600;
+            backdrop-filter: blur(4px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+        }
+        .year-badge i {
+            color: #ffb347;
+            margin-right: 6px;
+        }
+
+        /* filter section */
+        .filter-bar {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+            background: rgba(18, 24, 40, 0.7);
+            backdrop-filter: blur(12px);
+            padding: 0.8rem 1.5rem;
+            border-radius: 60px;
+            border: 1px solid rgba(255, 180, 71, 0.25);
+        }
+        .year-filters {
+            display: flex;
+            gap: 0.8rem;
+            flex-wrap: wrap;
+        }
+        .year-btn {
+            background: transparent;
+            border: 1.5px solid #3a405b;
+            color: #cdd3f0;
+            font-weight: 600;
+            padding: 0.5rem 1.3rem;
+            border-radius: 40px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            font-size: 0.9rem;
+        }
+        .year-btn.active {
+            background: #f5b042;
+            border-color: #f5b042;
+            color: #0a0f1e;
+            box-shadow: 0 4px 12px rgba(245, 176, 66, 0.3);
+        }
+        .year-btn:hover:not(.active) {
+            border-color: #f5b042;
+            color: #f5b042;
+        }
+        .search-box {
+            display: flex;
+            gap: 0.5rem;
+            background: #101624;
+            padding: 0.2rem 0.8rem;
+            border-radius: 40px;
+            align-items: center;
+        }
+        .search-box input {
+            background: transparent;
+            border: none;
+            padding: 0.6rem 0.2rem;
+            color: white;
+            outline: none;
+            font-size: 0.9rem;
+            width: 180px;
+        }
+        .search-box input::placeholder {
+            color: #6e7395;
+        }
+        .search-box button {
+            background: #f5b042;
+            border: none;
+            border-radius: 30px;
+            padding: 0.4rem 1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+
+        /* movie grid */
+        .movies-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+        .movie-card {
+            background: linear-gradient(145deg, #141b2f, #0f1426);
+            border-radius: 28px;
+            overflow: hidden;
+            transition: transform 0.25s ease, box-shadow 0.3s;
+            box-shadow: 0 15px 30px -12px rgba(0, 0, 0, 0.5);
+            border: 1px solid rgba(245, 176, 66, 0.2);
+            backdrop-filter: blur(2px);
+            cursor: pointer;
+        }
+        .movie-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 25px 35px -12px black;
+            border-color: rgba(245, 176, 66, 0.6);
+        }
+        .poster {
+            height: 340px;
+            background-size: cover;
+            background-position: center;
+            position: relative;
+            display: flex;
+            align-items: flex-end;
+            justify-content: flex-start;
+            padding: 12px;
+        }
+        .year-tag {
+            background: #000000aa;
+            backdrop-filter: blur(6px);
+            padding: 4px 12px;
+            border-radius: 40px;
+            font-size: 0.7rem;
+            font-weight: bold;
+            color: #ffd966;
+            border: 0.5px solid #ffb347;
+        }
+        .movie-info {
+            padding: 1.2rem;
+        }
+        .movie-info h3 {
+            font-size: 1.4rem;
+            font-weight: 700;
+            margin-bottom: 6px;
+        }
+        .movie-detail {
+            display: flex;
+            gap: 12px;
+            font-size: 0.8rem;
+            color: #b3b9e0;
+            margin: 8px 0;
+            flex-wrap: wrap;
+        }
+        .lang-badge {
+            background: #2a2f4b;
+            padding: 2px 10px;
+            border-radius: 20px;
+            font-size: 0.7rem;
+            font-weight: 600;
+        }
+        .book-btn {
+            margin-top: 12px;
+            width: 100%;
+            background: #f5b042;
+            border: none;
+            padding: 10px 0;
+            font-weight: bold;
+            border-radius: 40px;
+            color: #0a0f1e;
+            font-size: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            transition: 0.2s;
+            cursor: pointer;
+        }
+        .book-btn:hover {
+            background: #ffa01e;
+            transform: scale(0.98);
+            box-shadow: 0 4px 12px #f5b04260;
+        }
+
+        /* modal for booking */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background-color: rgba(0,0,0,0.85);
+            backdrop-filter: blur(8px);
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+        .modal-card {
+            background: #111827;
+            max-width: 500px;
+            width: 90%;
+            border-radius: 36px;
+            padding: 1.5rem;
+            border: 1px solid #f5b04260;
+            box-shadow: 0 30px 40px rgba(0,0,0,0.5);
+            animation: fadeUp 0.25s ease;
+        }
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(30px);}
+            to { opacity: 1; transform: translateY(0);}
+        }
+        .modal-card h2 {
+            color: #f5b042;
+            margin-bottom: 1rem;
+        }
+        .modal-card input, .modal-card select {
+            width: 100%;
+            padding: 12px;
+            margin: 8px 0;
+            background: #1e243b;
+            border: 1px solid #3f4668;
+            border-radius: 28px;
+            color: white;
+            font-size: 1rem;
+            outline: none;
+        }
+        .modal-card label {
+            font-weight: 500;
+            font-size: 0.85rem;
+            margin-top: 8px;
+            display: block;
+        }
+        .seat-selection {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+            margin: 10px 0;
+        }
+        .seat {
+            background: #2d3457;
+            padding: 8px 12px;
+            border-radius: 16px;
+            cursor: pointer;
+            transition: 0.1s;
+            font-size: 0.8rem;
+        }
+        .seat.selected {
+            background: #f5b042;
+            color: #0a0f1e;
+            font-weight: bold;
+        }
+        .modal-actions {
+            display: flex;
+            justify-content: flex-end;
+            gap: 12px;
+            margin-top: 1.5rem;
+        }
+        .modal-actions button {
+            padding: 10px 20px;
+            border-radius: 40px;
+            border: none;
+            font-weight: bold;
+            cursor: pointer;
+        }
+        .confirm-btn {
+            background: #f5b042;
+            color: #0a0f1e;
+        }
+        .cancel-btn {
+            background: #2e354f;
+            color: #e0e4ff;
+        }
+        .toast-msg {
+            position: fixed;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #1f2a3e;
+            backdrop-filter: blur(12px);
+            padding: 12px 24px;
+            border-radius: 50px;
+            color: #ffde9c;
+            font-weight: 600;
+            border-left: 5px solid #f5b042;
+            z-index: 1100;
+            transition: 0.2s;
+            box-shadow: 0 8px 20px black;
+            pointer-events: none;
+        }
+        .no-results {
+            text-align: center;
+            padding: 3rem;
+            background: #0f1422;
+            border-radius: 48px;
+            margin-top: 1rem;
+            color: #b9c3ff;
+        }
+        footer {
+            text-align: center;
+            margin-top: 3rem;
+            font-size: 0.75rem;
+            color: #6f78a3;
+        }
+        @media (max-width: 640px) {
+            body { padding: 1rem; }
+            .filter-bar { flex-direction: column; align-items: stretch; border-radius: 28px; }
+            .year-filters { justify-content: center; }
+            .search-box { justify-content: center; }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="header">
+        <div class="logo">
+            <h1>🎞️ RENU TALKIES</h1>
+            <span>Telugu Blockbusters · 2024 ★ 2025 ★ 2026</span>
+        </div>
+        <div class="year-badge">
+            <i>🎬</i> Ultimate Telugu Movie Hub
+        </div>
+    </div>
+
+    <div class="filter-bar">
+        <div class="year-filters" id="yearFilters">
+            <button data-year="all" class="year-btn active">✨ All Movies</button>
+            <button data-year="2024" class="year-btn">🔥 2024</button>
+            <button data-year="2025" class="year-btn">🚀 2025</button>
+            <button data-year="2026" class="year-btn">💥 2026 (Upcoming)</button>
+        </div>
+        <div class="search-box">
+            <input type="text" id="searchInput" placeholder="🔍 Search movie... (ex: Pushpa, Game Changer)">
+            <button id="searchBtn">Find</button>
+        </div>
+    </div>
+
+    <div id="moviesContainer" class="movies-grid">
+        <!-- dynamic movies injected -->
+    </div>
+    <div id="noResultsMsg" style="display: none;" class="no-results">🤷‍♂️ No matching Telugu movies found. Try another keyword!</div>
+    <footer>
+        ⚡ Book your seat for the biggest Telugu sensations of 2024, 2025 & 2026! <br>
+        🎟️ Experience visual extravaganza – real-time booking simulation.
+    </footer>
+</div>
+
+<!-- Booking Modal -->
+<div id="bookingModal" class="modal">
+    <div class="modal-card">
+        <h2 id="modalMovieTitle">Movie Title</h2>
+        <label>🎭 Your Name</label>
+        <input type="text" id="customerName" placeholder="Enter full name" autocomplete="off">
+        <label>📅 Show Date</label>
+        <input type="date" id="showDate" value="2026-05-21">
+        <label>⏰ Show Time</label>
+        <select id="showTime">
+            <option value="11:00 AM">11:00 AM (Matinee)</option>
+            <option value="3:00 PM">3:00 PM (First Show)</option>
+            <option value="6:30 PM">6:30 PM (Second Show)</option>
+            <option value="9:45 PM">9:45 PM (Night Show)</option>
+        </select>
+        <label>💺 Select Seat (Click to select/unselect)</label>
+        <div class="seat-selection" id="seatContainer">
+            <!-- seats A1-A6, B1-B6 generated js -->
+        </div>
+        <label>🎟️ Tickets Count: <span id="selectedCount">0</span></label>
+        <div class="modal-actions">
+            <button class="cancel-btn" id="closeModalBtn">Cancel</button>
+            <button class="confirm-btn" id="confirmBookingBtn">Confirm Booking ✨</button>
+        </div>
+    </div>
+</div>
+
+<script>
+    // ----------------------------- LATEST TELUGU MOVIES DATABASE 2024-2026 ---------------------------------
+    const moviesData = [
+        // 2024 HITS
+        { id: 1, title: "Pushpa 2: The Rule", year: 2024, language: "Telugu", genre: "Action/Drama", posterBg: "https://placehold.co/400x500/2a1f2e/FFB347?text=PUSHPA+2", rating: "⭐⭐⭐⭐⭐" },
+        { id: 2, title: "Kalki 2898 AD", year: 2024, language: "Telugu", genre: "Sci-Fi/Mytho", posterBg: "https://placehold.co/400x500/0f2a2f/FFB347?text=KALKI+2898" },
+        { id: 3, title: "Guntur Kaaram", year: 2024, language: "Telugu", genre: "Action/Family", posterBg: "https://placehold.co/400x500/2c1a2a/FFB347?text=GUNTUR+KAARAM" },
+        { id: 4, title: "Hanu-Man", year: 2024, language: "Telugu", genre: "Superhero", posterBg: "https://placehold.co/400x500/1c2a2f/FFB347?text=HANUMAN" },
+        { id: 5, title: "Salaar: Part 2", year: 2024, language: "Telugu", genre: "Action", posterBg: "https://placehold.co/400x500/201d2e/FFB347?text=SALAAR" },
+        // 2025 MASSIVE BLOCKBUSTERS
+        { id: 6, title: "Spirit", year: 2025, language: "Telugu", genre: "Action/Thriller", posterBg: "https://placehold.co/400x500/1f2a36/FFB347?text=SPIRIT" },
+        { id: 7, title: "Game Changer", year: 2025, language: "Telugu", genre: "Political/Action", posterBg: "https://placehold.co/400x500/242136/FFB347?text=GAME+CHANGER" },
+        { id: 8, title: "RC16", year: 2025, language: "Telugu", genre: "Action/Drama", posterBg: "https://placehold.co/400x500/182235/FFB347?text=RC16" },
+        { id: 9, title: "OG (They Call Him OG)", year: 2025, language: "Telugu", genre: "Gangster", posterBg: "https://placehold.co/400x500/1f243a/FFB347?text=ORIGINAL+GANGSTER" },
+        { id: 10, title: "Ustaad Bhagat Singh", year: 2025, language: "Telugu", genre: "Action", posterBg: "https://placehold.co/400x500/2a2a2a/FFB347?text=USTAAD+BHAGAT" },
+        // 2026 UPCOMING MOST AWAITED
+        { id: 11, title: "SSMB29", year: 2026, language: "Telugu", genre: "Adventure/Epic", posterBg: "https://placehold.co/400x500/1f2f3c/FFB347?text=SSMB29" },
+        { id: 12, title: "Pushpa 3: The Rampage", year: 2026, language: "Telugu", genre: "Action/Drama", posterBg: "https://placehold.co/400x500/281f2c/FFB347?text=PUSHPA+3" },
+        { id: 13, title: "Kalki 2: Divine Awakening", year: 2026, language: "Telugu", genre: "Sci-Fi/Fantasy", posterBg: "https://placehold.co/400x500/0f2a2f/FFB347?text=KALKI+2" },
+        { id: 14, title: "Warrior NTR", year: 2026, language: "Telugu", genre: "Period/Action", posterBg: "https://placehold.co/400x500/2c1a26/FFB347?text=WARRIOR+NTR" },
+        { id: 15, title: "Young Tiger 2026", year: 2026, language: "Telugu", genre: "Mass Action", posterBg: "https://placehold.co/400x500/2f1e2e/FFB347?text=YOUNG+TIGER" }
+    ];
+
+    // ---------- Global variables ----------
+    let currentFilterYear = "all";
+    let currentSearchQuery = "";
+    let selectedMovieForBooking = null;      // store movie obj for booking
+    let selectedSeats = new Set();             // store seat ids (eg 'A1')
+    const seatList = ["A1", "A2", "A3", "A4", "A5", "A6", "B1", "B2", "B3", "B4", "B5", "B6"];
+
+    // DOM elements
+    const moviesContainer = document.getElementById("moviesContainer");
+    const noResultsDiv = document.getElementById("noResultsMsg");
+    const modal = document.getElementById("bookingModal");
+    const modalMovieTitleSpan = document.getElementById("modalMovieTitle");
+    const seatContainer = document.getElementById("seatContainer");
+    const selectedCountSpan = document.getElementById("selectedCount");
+    const customerNameInput = document.getElementById("customerName");
+    const showDateInput = document.getElementById("showDate");
+    const showTimeSelect = document.getElementById("showTime");
+    const confirmBtn = document.getElementById("confirmBookingBtn");
+    const closeModalBtn = document.getElementById("closeModalBtn");
+
+    // Helper: show toast message
+    function showToast(message, isError = false) {
+        let toast = document.querySelector(".toast-msg");
+        if(toast) toast.remove();
+        const div = document.createElement("div");
+        div.className = "toast-msg";
+        div.style.backgroundColor = isError ? "#3a1e2a" : "#1e2a2f";
+        div.style.borderLeftColor = isError ? "#ff6b6b" : "#f5b042";
+        div.innerText = message;
+        document.body.appendChild(div);
+        setTimeout(() => { div.style.opacity = "0"; setTimeout(() => div.remove(), 500); }, 2800);
+    }
+
+    // Filter movies based on year & search
+    function getFilteredMovies() {
+        let filtered = [...moviesData];
+        if (currentFilterYear !== "all") {
+            filtered = filtered.filter(m => m.year === parseInt(currentFilterYear));
+        }
+        if (currentSearchQuery.trim() !== "") {
+            const query = currentSearchQuery.trim().toLowerCase();
+            filtered = filtered.filter(m => m.title.toLowerCase().includes(query));
+        }
+        return filtered;
+    }
+
+    // render movie grid
+    function renderMovies() {
+        const filtered = getFilteredMovies();
+        if (filtered.length === 0) {
+            moviesContainer.style.display = "none";
+            noResultsDiv.style.display = "block";
+            return;
+        }
+        moviesContainer.style.display = "grid";
+        noResultsDiv.style.display = "none";
+        moviesContainer.innerHTML = filtered.map(movie => `
+            <div class="movie-card" data-id="${movie.id}">
+                <div class="poster" style="background-image: linear-gradient(0deg, #03050bdd, #0b0e1aaa), url('${movie.posterBg}'); background-size: cover;">
+                    <span class="year-tag">📅 ${movie.year} · ${movie.genre.split('/')[0]}</span>
+                </div>
+                <div class="movie-info">
+                    <h3>${movie.title}</h3>
+                    <div class="movie-detail">
+                        <span>🎭 ${movie.language}</span>
+                        <span class="lang-badge">⭐ ${movie.rating || '4.7'}</span>
+                        <span>🎬 ${movie.genre}</span>
+                    </div>
+                    <button class="book-btn" data-movie='${JSON.stringify(movie)}'>🎟️ Book Tickets</button>
+                </div>
+            </div>
+        `).join('');
+
+        // attach event listeners to each book button (delegation also fine but direct)
+        document.querySelectorAll('.book-btn').forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                const movieRaw = btn.getAttribute('data-movie');
+                const movieObj = JSON.parse(movieRaw);
+                openBookingModal(movieObj);
+            });
+        });
+    }
+
+    // generate seat UI inside modal
+    function renderSeats() {
+        seatContainer.innerHTML = "";
+        seatList.forEach(seat => {
+            const seatDiv = document.createElement("div");
+            seatDiv.classList.add("seat");
+            if (selectedSeats.has(seat)) seatDiv.classList.add("selected");
+            seatDiv.textContent = seat;
+            seatDiv.addEventListener("click", (e) => {
+                e.stopPropagation();
+                if (selectedSeats.has(seat)) {
+                    selectedSeats.delete(seat);
+                } else {
+                    selectedSeats.add(seat);
+                }
+                renderSeats();   // refresh visual
+                updateSeatCount();
+            });
+            seatContainer.appendChild(seatDiv);
+        });
+        updateSeatCount();
+    }
+
+    function updateSeatCount() {
+        selectedCountSpan.innerText = selectedSeats.size;
+    }
+
+    // reset booking modal state for fresh movie
+    function resetBookingState(movie) {
+        selectedSeats.clear();
+        renderSeats();
+        customerNameInput.value = "";
+        // set default date to tomorrow (just a nice touch)
+        const tomorrow = new Date();
+        tomorrow.setDate(tomorrow.getDate() + 1);
+        showDateInput.value = tomorrow.toISOString().split('T')[0];
+        showTimeSelect.value = "6:30 PM";
+        updateSeatCount();
+        modalMovieTitleSpan.innerText = `🎬 ${movie.title} (${movie.year})`;
+    }
+
+    function openBookingModal(movie) {
+        selectedMovieForBooking = movie;
+        resetBookingState(movie);
+        modal.style.display = "flex";
+    }
+
+    function closeModal() {
+        modal.style.display = "none";
+        selectedMovieForBooking = null;
+        selectedSeats.clear();
+    }
+
+    // confirm booking
+    function confirmBooking() {
+        if (!selectedMovieForBooking) {
+            showToast("⚠️ Movie info missing", true);
+            closeModal();
+            return;
+        }
+        const custName = customerNameInput.value.trim();
+        if (custName === "") {
+            showToast("❌ Please enter your name to book tickets", true);
+            return;
+        }
+        if (selectedSeats.size === 0) {
+            showToast("💺 Please select at least one seat!", true);
+            return;
+        }
+        const showDate = showDateInput.value;
+        const showTime = showTimeSelect.value;
+        const seatArray = Array.from(selectedSeats).sort();
+        const ticketCount = seatArray.length;
+        const confirmationMsg = `🎉 Booking Confirmed! 🎉\nMovie: ${selectedMovieForBooking.title} (${selectedMovieForBooking.year})\nName: ${custName}\nDate: ${showDate} | Time: ${showTime}\nSeats: ${seatArray.join(", ")}\nTickets: ${ticketCount}\n✨ Enjoy the show at RENU TALKIES! ✨`;
+        showToast(`✅ ${ticketCount} ticket(s) booked for ${selectedMovieForBooking.title}! Check console for details.`);
+        alert(confirmationMsg);   // classic user feedback, static but realistic
+        // optional log for dev
+        console.log("[BOOKING DETAILS]", {
+            movie: selectedMovieForBooking.title,
+            year: selectedMovieForBooking.year,
+            name: custName,
+            date: showDate,
+            time: showTime,
+            seats: seatArray,
+            count: ticketCount,
+            theatre: "RENU TALKIES"
+        });
+        closeModal();
+    }
+
+    // Event listeners for filters & search
+    function initEventListeners() {
+        const yearBtns = document.querySelectorAll(".year-btn");
+        yearBtns.forEach(btn => {
+            btn.addEventListener("click", (e) => {
+                yearBtns.forEach(b => b.classList.remove("active"));
+                btn.classList.add("active");
+                currentFilterYear = btn.getAttribute("data-year");
+                renderMovies();
+            });
+        });
+        const searchBtn = document.getElementById("searchBtn");
+        const searchInput = document.getElementById("searchInput");
+        function performSearch() {
+            currentSearchQuery = searchInput.value;
+            renderMovies();
+        }
+        searchBtn.addEventListener("click", performSearch);
+        searchInput.addEventListener("keyup", (e) => {
+            if (e.key === "Enter") performSearch();
+        });
+        // modal controls
+        confirmBtn.addEventListener("click", confirmBooking);
+        closeModalBtn.addEventListener("click", closeModal);
+        window.addEventListener("click", (e) => {
+            if (e.target === modal) closeModal();
+        });
+    }
+
+    // initial load
+    function init() {
+        renderMovies();
+        initEventListeners();
+        // prefill seat generation (just for modal)
+        renderSeats(); // initial dummy seats but will be regenerated on modal open
+    }
+    init();
+</script>
+</body>
+</html>
